@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Client } from 'src/models/client';
 import { ClientService } from 'src/services/client.service';
 
@@ -9,16 +10,16 @@ import { ClientService } from 'src/services/client.service';
 })
 export class ClientsComponent implements OnInit {
 
-  @Output() clients: Client[] = [];
+  @Output() 
+  clients$: Observable<Client[]> = of([]);
 
-  constructor(private clientService: ClientService) { }
+  constructor(
+    private clientService: ClientService,
+    ) { }
 
   ngOnInit(): void {
-    this.getClients();
-  }
-
-  getClients(): void {
-    this.clients = this.clientService.getClients();
+    // this.getClients();
+    this.clients$ = this.clientService.getClients();
   }
 
 }

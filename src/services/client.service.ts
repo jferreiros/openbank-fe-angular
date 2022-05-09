@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CLIENTS } from 'src/mocks/mocks-clients';
 import { Client } from 'src/models/client';
 
@@ -10,13 +10,14 @@ export class ClientService {
 
   constructor() { }
 
-  getClient(id:number): any {
-    var client = CLIENTS.filter(client => client.id == id)
-    const cliente = client[0];
-    return cliente;
+  getClient(id:number): Observable<Client[]> {
+    const client = CLIENTS.find(client => client.id == id)!;
+    return of([client]);
   };
-  getClients(): Client[] {
-    return CLIENTS;
+
+  getClients(): Observable<Client[]> {
+    const clients = of(CLIENTS);
+    return clients;
   };
   // updateClient(id:number): void {};
 

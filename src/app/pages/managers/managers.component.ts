@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { Manager } from 'src/models/manager';
+import { ManagerService } from 'src/services/manager.service';
 
 @Component({
   selector: 'app-managers',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagersComponent implements OnInit {
 
-  constructor() { }
+  @Output() 
+  managers$: Observable<Manager[]> = of([]);
+
+  constructor(
+    private managerService: ManagerService,
+
+  ) { }
 
   ngOnInit(): void {
+    this.managers$ = this.managerService.getManagers();
   }
 
 }

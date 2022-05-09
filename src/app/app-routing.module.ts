@@ -21,12 +21,13 @@ const routes: Routes = [
   { path: 'loans' , component: LoansComponent},
   { path: 'wires' , component: WiresComponent},
   { path: 'messages' , component: MessagesComponent},
+  { path: 'clients/create' , component: NewClientComponent},
   { path: 'clients/:id' , component: ClientComponent},
   { path: 'managers/:id' , component: ManagerComponent},
   { path: 'loans/:id' , component: LoanComponent},
   { path: 'wires/:id' , component: WireComponent},
   { path: 'messages/:id' , component: MessageComponent},
-  { path: 'new-client' , component: NewClientComponent},
+  
 ];
 
 @NgModule({

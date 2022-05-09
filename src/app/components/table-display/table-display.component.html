@@ -1,4 +1,25 @@
-<div class="table-display">
+<div *ngIf="list" class="table">
+    <div class="table-header">
+        <div class="row">
+            <div *ngFor="let col of keys">{{ col }}</div>
+            <div></div>
+        </div>
+    </div>
+    <div class="table-body">
+        <div *ngFor="let row of list" class="row">
+            <div *ngFor="let key of keys">{{ row[key] }}</div>
+            <div class="row-controllers">
+                <app-button-send (onPressMyButton)="modify(row.id)" text="Modify"></app-button-send>
+                <app-button-send (onPressMyButton)="delete(row)" text="Delete"></app-button-send>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="table-display">
     <div class="table-header">
         <h2>Clients</h2>
         <app-button-send (onPressMyButton)="newClient()" text="Insert"></app-button-send>
@@ -7,4 +28,4 @@
        <app-table-row *ngFor="let client of clients" [client]="client"></app-table-row> 
     </div>
     
-</div>
+</div> -->

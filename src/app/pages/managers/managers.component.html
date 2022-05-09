@@ -1,1 +1,6 @@
-<p>managers works!</p>
+<div class="section">
+    <app-section-title title="Managers" button="Insert" buttonPath="managers/create"></app-section-title>
+    <div class="section-body">
+        <app-table-display [data]="managers$" path="managers"></app-table-display>
+    </div>
+</div> 

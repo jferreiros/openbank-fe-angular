@@ -1,1 +1,12 @@
-<app-table-display [clients]="clients"></app-table-display>
+<div class="section">
+    <!-- <div class="section-header">
+        <h2>Clients</h2>
+        <app-button-send (onPressMyButton)="newClient()" text="Insert"></app-button-send>
+    </div> -->
+    <app-section-title title="Clients" button="Insert" buttonPath="clients/create"></app-section-title>
+    <div class="section-body">
+        <app-table-display [data]="clients$" path="clients"></app-table-display>
+    </div>
+</div> 
+
+

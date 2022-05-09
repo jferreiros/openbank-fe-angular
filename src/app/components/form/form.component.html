@@ -1,1 +1,15 @@
-<p>form works!</p>
+<div class="main-body" *ngIf="list">
+    <form action=""  *ngFor="let row of list">
+        <div *ngFor="let key of keys" class="form-group">
+            <label for="{{ key }}">
+                {{ key }}:
+            </label>
+            <input type="text" [(ngModel)]="row[key]" id="{{ key }}" [ngModelOptions]="{standalone: true}">
+        </div>
+                    
+    </form>
+    <div class="buttons">
+        <app-button-send text="Save"></app-button-send> 
+        <app-button-send text="Cancel" (click)="goBack()"></app-button-send> 
+    </div>
+</div>

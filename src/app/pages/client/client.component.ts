@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Client } from 'src/models/client';
 import { ClientService } from 'src/services/client.service';
 
@@ -12,7 +12,9 @@ import { ClientService } from 'src/services/client.service';
 })
 export class ClientComponent implements OnInit {
 
-  client?: Client;
+  @Output() 
+  client$: Observable<Client[]> = of([]);
+  // client: Client | undefined;
   // client?: Observable<Client>;
 
   constructor(
@@ -27,8 +29,11 @@ export class ClientComponent implements OnInit {
 
   getClient(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.client = this.clientService.getClient(id);
-    console.log(this.client)
+    this.client$ = this.clientService.getClient(id)
+    // .subscribe(client => this.client = client);
+
+    // this.client = this.clientService.getClient(id);
+    // console.log(this.client)
   }
 
   goBack(): void {

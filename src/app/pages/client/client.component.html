@@ -8,10 +8,15 @@
 </app-main-body> -->
 
 
+<div class="section">
+    <app-section-title title="Modify client"></app-section-title>
+    <app-form [data]="client$"></app-form>
+</div>
 
 
-<div *ngIf="client" class="client">
-    <!-- <app-section-title [title]="(client | async)?.usuario"></app-section-title> -->
+
+
+<!-- <div *ngIf="client" class="client">
     <app-section-title title="Modify client"></app-section-title>
     <div class="main-body">
         <form action="">
@@ -53,4 +58,4 @@
         </div>
     </div>
 
-</div>
+</div> -->

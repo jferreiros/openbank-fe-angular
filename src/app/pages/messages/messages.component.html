@@ -1,1 +1,6 @@
-<p>messages works!</p>
+<div class="section">
+    <app-section-title title="Messages" button="Insert" buttonPath="messages/create"></app-section-title>
+    <div class="section-body">
+        <app-table-display [data]="messages$" path="messages"></app-table-display>
+    </div>
+</div> 
