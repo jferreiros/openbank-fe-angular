@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { CLIENTS } from 'src/mocks/mocks-clients';
 import { Client } from 'src/models/client';
@@ -8,7 +9,14 @@ import { Client } from 'src/models/client';
 })
 export class ClientService {
 
-  constructor() { }
+  private clientUrl = 'http://localhost:8080/clients';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient,
+    ) { }
 
   getClient(id:number): Observable<Client[]> {
     const client = CLIENTS.find(client => client.id == id)!;
@@ -16,9 +24,12 @@ export class ClientService {
   };
 
   getClients(): Observable<Client[]> {
-    const clients = of(CLIENTS);
-    return clients;
+    return this.http.get<Client[]>(this.clientUrl)
+    // const clients = of(CLIENTS);
+    // return clients;
   };
+
+  
   // updateClient(id:number): void {};
 
   deleteClient(id:number): any {

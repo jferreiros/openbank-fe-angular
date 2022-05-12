@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { WIRES } from 'src/mocks/mocks-wires';
@@ -8,7 +9,13 @@ import { Wire } from 'src/models/wire';
 })
 export class WireService {
 
-  constructor() { }
+  private wireUrl = 'http://localhost:8080/wires';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) { }
 
   getWire(id:number): Observable<Wire[]> {
     var loan = WIRES.find(loan => loan.id == id)!;

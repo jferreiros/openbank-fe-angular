@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MESSAGES } from 'src/mocks/mocks-messages';
@@ -8,7 +9,14 @@ import { Message } from 'src/models/message';
 })
 export class MessageService {
 
-  constructor() { }
+  private messageUrl = 'http://localhost:8080/message';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient,
+    ) { }
 
   getMessage(id:number): Observable<Message[]> {
     var message = MESSAGES.find(message => message.id == id)!;

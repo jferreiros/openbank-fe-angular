@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MANAGERS } from 'src/mocks/mocks-managers';
@@ -8,7 +9,14 @@ import { Manager } from 'src/models/manager';
 })
 export class ManagerService {
 
-  constructor() { }
+  private managerUrl = 'http://localhost:8080/managers';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient,
+    ) { }
 
   getManager(id:number): Observable<Manager[]> {
     var manager = MANAGERS.find(manager => manager.id == id)!;

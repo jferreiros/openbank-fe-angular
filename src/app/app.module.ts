@@ -30,6 +30,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { NewClientComponent } from './pages/new-client/new-client.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,11 +61,13 @@ import { FormsModule } from '@angular/forms';
     MainContentComponent,
     MainBodyComponent,
     NewClientComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
